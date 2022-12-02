@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       
       var j=0;
       for(j;j<a2.length;j++){
-        var s2=a2[j].displayableString().slice(0,-11)
+        var s2=a2[j].displayableString()
         console.log(s2)
         //console.log(s2.length)
       }
@@ -120,7 +120,7 @@ module.exports = (sequelize, DataTypes) => {
 
     displayableString() {
       let checkbox = this.completed ? "[x]" : "[ ]";
-      return `${this.id}. ${checkbox} ${this.title} ${this.dueDate}`;
+      return `${this.id}. ${checkbox} ${this.title}${this.dueDate === new Date().toLocaleDateString("en-CA") ? "":" "+this.dueDate }`;
     }
   }
   Todo.init({
